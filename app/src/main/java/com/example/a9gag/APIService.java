@@ -16,4 +16,6 @@ public interface APIService {
     })
     @GET("/v2/post-list?group=1&type=hot&itemCount=25")
     Call<PostsResponse> fetchPosts();
+
+
 }

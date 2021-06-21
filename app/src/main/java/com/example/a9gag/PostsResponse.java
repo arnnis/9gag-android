@@ -289,7 +289,7 @@ class Images {
     private Image imageFbThumbnail;
     private Image image700Ba;
     private Image image460Sa;
-    private Image460Sv image460Sv;
+    private Image460Sv image460sv;
 
     public Image getImage700() { return image700; }
     public void setImage700(Image value) { this.image700 = value; }
@@ -306,8 +306,8 @@ class Images {
     public Image getImage460Sa() { return image460Sa; }
     public void setImage460Sa(Image value) { this.image460Sa = value; }
 
-    public Image460Sv getImage460Sv() { return image460Sv; }
-    public void setImage460Sv(Image460Sv value) { this.image460Sv = value; }
+    public Image460Sv getImage460sv() { return image460sv; }
+    public void setImage460sv(Image460Sv value) { this.image460sv = value; }
 }
 
 class Image {
