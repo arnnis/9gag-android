@@ -155,30 +155,30 @@ class CommentsComment {
 
 class Attachment {
     private AttachmentType type;
-    private CommentData commentData;
+    private CommentData data;
 
     public AttachmentType getType() { return type; }
     public void setType(AttachmentType value) { this.type = value; }
 
-    public CommentData getData() { return commentData; }
-    public void setData(CommentData value) { this.commentData = value; }
+    public CommentData getData() { return data; }
+    public void setData(CommentData value) { this.data = value; }
 }
 
 class CommentData {
     private ClassEnum type;
-    private CommentImage commentImage;
-    private CommentImage commentImageXLarge;
+    private CommentImage image;
+    private CommentImage imageXLarge;
     private CommentImage animated;
     private CommentImage video;
 
     public ClassEnum getType() { return type; }
     public void setType(ClassEnum value) { this.type = value; }
 
-    public CommentImage getImage() { return commentImage; }
-    public void setImage(CommentImage value) { this.commentImage = value; }
+    public CommentImage getImage() { return image; }
+    public void setImage(CommentImage value) { this.image = value; }
 
-    public CommentImage getImageXLarge() { return commentImageXLarge; }
-    public void setImageXLarge(CommentImage value) { this.commentImageXLarge = value; }
+    public CommentImage getImageXLarge() { return imageXLarge; }
+    public void setImageXLarge(CommentImage value) { this.imageXLarge = value; }
 
     public CommentImage getAnimated() { return animated; }
     public void setAnimated(CommentImage value) { this.animated = value; }
@@ -339,7 +339,7 @@ enum Parent {
 
 class User {
     private String userID;
-    private String avatarURL;
+    private String avatarUrl;
     private String displayName;
     private String emojiStatus;
     private String country;
@@ -357,8 +357,8 @@ class User {
     public String getUserID() { return userID; }
     public void setUserID(String value) { this.userID = value; }
 
-    public String getAvatarURL() { return avatarURL; }
-    public void setAvatarURL(String value) { this.avatarURL = value; }
+    public String getAvatarUrl() { return avatarUrl; }
+    public void setAvatarUrl(String value) { this.avatarUrl = value; }
 
     public String getDisplayName() { return displayName; }
     public void setDisplayName(String value) { this.displayName = value; }

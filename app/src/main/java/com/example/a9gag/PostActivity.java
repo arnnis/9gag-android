@@ -31,6 +31,7 @@ public class PostActivity extends AppCompatActivity {
         String postURL = getIntent().getStringExtra("POST_URL");
 
         ActionBar bar = getSupportActionBar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#222222")));
         bar.setTitle("Post");
 
@@ -73,5 +74,11 @@ public class PostActivity extends AppCompatActivity {
         commentsRecyclerView.setLayoutManager(layoutManager);
         commentsRecyclerView.setItemAnimator(new DefaultItemAnimator());
         commentsRecyclerView.setAdapter(commentsRecyclerAdapter);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
