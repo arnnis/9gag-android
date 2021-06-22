@@ -1,5 +1,3 @@
-// PostsResponse.java
-
 package com.example.a9gag;
 
 public class PostsResponse {
@@ -289,7 +287,7 @@ class Images {
     private Image imageFbThumbnail;
     private Image image700Ba;
     private Image image460Sa;
-    private Image460Sv image460sv;
+    private Image460Sv image460Sv;
 
     public Image getImage700() { return image700; }
     public void setImage700(Image value) { this.image700 = value; }
@@ -306,8 +304,8 @@ class Images {
     public Image getImage460Sa() { return image460Sa; }
     public void setImage460Sa(Image value) { this.image460Sa = value; }
 
-    public Image460Sv getImage460sv() { return image460sv; }
-    public void setImage460sv(Image460Sv value) { this.image460sv = value; }
+    public Image460Sv getImage460Sv() { return image460Sv; }
+    public void setImage460Sv(Image460Sv value) { this.image460Sv = value; }
 }
 
 class Image {
@@ -420,19 +418,17 @@ class Tag {
     public void setURL(String value) { this.url = value; }
 }
 
-
-
 class TargetedAdTags {
 }
 
-class TopComments {
+ class TopComments {
     private Object[] comments;
 
     public Object[] getComments() { return comments; }
     public void setComments(Object[] value) { this.comments = value; }
 }
 
- class Meta {
+class Meta {
     private long timestamp;
     private String status;
     private String sid;

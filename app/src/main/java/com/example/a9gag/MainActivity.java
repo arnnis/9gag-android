@@ -1,17 +1,17 @@
 package com.example.a9gag;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.app.ActionBar;
-
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
-import android.widget.Toast;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,9 +19,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
     private PostsResponse postsResponse;
     private RecyclerView usersRecyclerView;
+    SwipeRefreshLayout swipeRefreshLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +34,24 @@ public class MainActivity extends AppCompatActivity {
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#222222")));
 
         this.postsResponse = new PostsResponse();
-        usersRecyclerView = findViewById(R.id.users_recyclerview);
+        usersRecyclerView = findViewById(R.id.posts_recyclerview);
 
+        swipeRefreshLayout = findViewById(R.id.posts_swipe_refresh);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadPosts();
+            }
+        });
+
+        loadPosts();
+    }
+
+    private void loadPosts() {
+        swipeRefreshLayout.setRefreshing(true);
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.9gag.com")
+                .baseUrl("http://local.host")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -54,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("URL", response.body().getData().getPosts()[0].getImages().getImage460().getURL());
                 postsResponse = response.body();
                 showData();
-
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
@@ -62,9 +78,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Failed !", Toast.LENGTH_LONG).show();
             }
         });
-
-
-
     }
 
     private void showData() {

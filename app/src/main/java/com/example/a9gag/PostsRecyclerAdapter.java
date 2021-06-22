@@ -61,7 +61,7 @@ public class PostsRecyclerAdapter extends RecyclerView.Adapter<PostsRecyclerAdap
         return new UserViewHolder(itemView);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         holder.usernameTxt.setText(postsResponse.getData().getPosts()[position].getTitle());
@@ -75,6 +75,7 @@ public class PostsRecyclerAdapter extends RecyclerView.Adapter<PostsRecyclerAdap
                 Toast.makeText(holder.imageView.getContext(), "Opened post", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(v.getContext(), PostActivity.class);
                 intent.putExtra("POST_ID", postsResponse.getData().getPosts()[position].getID());
+                intent.putExtra("POST_URL", postsResponse.getData().getPosts()[position].getURL());
                 v.getContext().startActivity(intent);
             }
         });

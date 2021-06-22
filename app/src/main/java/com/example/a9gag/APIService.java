@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Query;
 
 public interface APIService {
     @Headers({
@@ -14,8 +15,9 @@ public interface APIService {
             "9gag-request-signature: 519718b8d6323eda54397f8f3d8ff9c39d97e88a",
             "9gag-timestamp: 1624281524824",
     })
-    @GET("/v2/post-list?group=1&type=hot&itemCount=25")
+    @GET("https://api.9gag.com/v2/post-list?group=1&type=hot&itemCount=25")
     Call<PostsResponse> fetchPosts();
 
-
+    @GET("https://comment-cdn.9gag.com/v2/cacheable/comment-list.json?appId=a_dd8f2b7d304a10edaf6f29517ea0ca4100a43d1b&type=hot&level=1&count=10")
+    Call<CommentsResponse> fetchComments(@Query("url") String url);
 }
